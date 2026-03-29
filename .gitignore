@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+.venv/
+venv/
+env/
+
+# Env / secrets
+.env
+*.env.local
+
+# Reports output
+reports/
+
+# Migration checkpoints
+migration_checkpoint.json
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Temp files
+/tmp/sp_migration/

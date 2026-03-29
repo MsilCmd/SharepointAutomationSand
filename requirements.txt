@@ -1,0 +1,34 @@
+# Microsoft / SharePoint
+msal==1.28.0                        # Azure AD authentication
+Office365-REST-Python-Client==2.5.8  # SharePoint REST API client
+msgraph-sdk==1.3.2                  # Microsoft Graph SDK
+
+# Dropbox
+dropbox==11.36.2                    # Dropbox Python SDK
+
+# HTTP & utilities
+requests==2.31.0
+httpx==0.27.0
+tenacity==8.2.3                     # Retry logic
+
+# Data & reporting
+pandas==2.2.2
+openpyxl==3.1.2                     # Excel report generation
+jinja2==3.1.4                       # HTML dashboard templating
+plotly==5.22.0                      # Charts in dashboards
+kaleido==0.2.1                      # Static image export for plotly
+
+# Config & environment
+python-dotenv==1.0.1
+pydantic==2.7.0
+pydantic-settings==2.3.0
+
+# CLI
+click==8.1.7
+rich==13.7.1                        # Pretty terminal output
+
+# Testing
+pytest==8.2.0
+pytest-asyncio==0.23.7
+pytest-mock==3.14.0
+responses==0.25.3                   # Mock HTTP responses

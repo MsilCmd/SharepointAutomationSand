@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  scheduler:
+    build: .
+    env_file: .env
+    volumes:
+      - ./reports:/app/reports          # Persist generated dashboards
+      - ./migration_checkpoint.json:/app/migration_checkpoint.json  # Persist checkpoints
+    restart: unless-stopped
+    command: python src/scheduler.py
+
+  # One-off import (run with: docker compose run --rm importer)
+  importer:
+    build: .
+    env_file: .env
+    profiles: ["tools"]
+    command: >
+      python scripts/dropbox_import.py
+        --site ${SHAREPOINT_SITE_URL}
+        --sp-lib "Documents"
+        --dropbox-path ""
+        --sp-folder "Dropbox Imports"
+        --audit-list "Import Log"
+
+  # One-off report generation
+  reporter:
+    build: .
+    env_file: .env
+    volumes:
+      - ./reports:/app/reports
+    profiles: ["tools"]
+    command: >
+      python scripts/generate_report.py
+        --site ${SHAREPOINT_SITE_URL}
+        --lists "Import Log"
+        --lists "Tasks"
+        --format html
+        --output /app/reports/dashboard.html
